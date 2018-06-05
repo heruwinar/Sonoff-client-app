@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sonoff control</title>
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width height=device-height, viewport-fit=cover"/>>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+  <link rel="stylesheet" href="./css/style.css">
+
+
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="burger">
+      <div class="burger__patty"></div>
+    </div>
+
+    <ul class="nav__list">
+      <li class="nav__item">
+        <a href="#1" class="nav__link c-blue">
+          <i class="fas fa-th-list"></i>
+        </a>
+      </li>
+      <li class="nav__item">
+        <a href="#2" class="nav__link c-yellow scrolly">
+          <i class="far fa-lightbulb"></i>
+        </a>
+      </li>
+      <li class="nav__item">
+        <a href="#3" class="nav__link c-red">
+          <i class="fas fa-lightbulb"></i>
+        </a>
+      </li>
+      <li class="nav__item">
+        <a href="#4" class="nav__link c-green">
+          <i class="fa fa-info-circle"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="panel b-blue" id="1">
+    <article class="panel__wrapper">
+      <div class="panel__content">
+        <h1 class="panel__headline">
+          <i class="fas fa-th-list"></i>&nbsp;Пристрої</h1>
+        <div class="panel__block"></div>
+        <p>На даний момент до шлюзу підключено такі пристрої:</p>
+        <!--Тут должно быть реальное получение данных, например, так
+          <script>
+            $.get( "http://192.168.0.110:1080/devices", function( data ) {
+                var jsonData = JSON.parse(data);
+                var result = "ID: "+jsonData[0].id+"<br>Model: "+jsonData[0].model+"<br>Status: alive";
+                $( "#deviceInfo" ).html( result);                
+            });
+          </script>  
+        -->
+        <p>
+          <div><h2>Sonoff Dual - 2 gang WiFi Light Switch (ESP8266)</h2></div>
+          <div id="deviceImage>">
+            <img src="./img/sonoff-dual.png" style="padding-left: 40px;" height="300px"/>
+          </div>
+          <div id="deviceInfo" style="padding-left: 40px;">
+            <strong>ID</strong>: 1000251d73<br><strong>Model</strong>: PSF-B04GL<br><strong>Status</strong>: offline
+          </div>
+        </p>
+      </div>
+    </article>
+  </section>
+  <section class="panel b-yellow" id="2">
+    <article class="panel__wrapper">
+      <div class="panel__content">
+        <h1 class="panel__headline">
+          <i class="far fa-lightbulb"></i>&nbsp;Увімкнути освітлення</h1>
+        <div class="panel__block"></div>
+        <p>Щоб увімкнути освітлення з використанням поточного пристрою, натисніть одну з кнопок нижче.</p>
+        <div><h2>Sonoff Dual - 2 gang WiFi Light Switch (ESP8266)</h2></div>
+        <p>       
+          <button class="switchOn" onclick="$.get( 'http://192.168.0.110:1080/devices/1000251d73/on', function( data ) { $( '#resultsOn').html(data);});">Перший канал</button>
+        </p>
+        <p>
+          <button class="switchOn" onclick="$.get( 'http://192.168.0.110:1080/devices/1000251d73/on', function( data ) { $( '#resultsOn').html(data);});">Другий канал</button>
+        </p>
+        <br>
+        <p id="resultsOn"><strong>Status</strong>: Ok</p>
+      </div>
+    </article>
+  </section>
+  <section class="panel b-red" id="3">
+    <article class="panel__wrapper">
+      <div class="panel__content">
+        <h1 class="panel__headline">
+          <i class="fas fa-lightbulb"></i>&nbsp;Вимкнути освітлення</h1>
+        <div class="panel__block"></div>
+        <p>Щоб увімкнути освітлення з використанням поточного пристрою, натисніть одну з кнопок нижче.</p>
+        <div><h2>Sonoff Dual - 2 gang WiFi Light Switch (ESP8266)</h2></div>
+        <p>
+          <button class="switchOff" onclick="$.get( 'http://192.168.0.110:1080/devices/1000251d73/off', function( data ) { $( '#resultsOn').html(data);});">Перший канал</button>
+        </p>
+        <p>
+          <button class="switchOff" onclick="$.get( 'http://192.168.0.110:1080/devices/1000251d73/off', function( data ) { $( '#resultsOn').html(data);});">Другий канал</button>
+        </p>
+        <br>
+        <p id="resultsOn"><strong>Status</strong>: Ok</p>
+      </div>
+    </article>
+  </section>
+  <section class="panel b-green" id="4">
+    <article class="panel__wrapper">
+      <div class="panel__content">
+        <h1 class="panel__headline">
+          <i class="fa fa-info-circle"></i>&nbsp;Про програму</h1>
+        <div class="panel__block"></div>
+        <p>Програма, яку ви зараз використовуєте, є прототипом, створеним студентом групи <strong>45</strong>, <strong>Ніколаєнко Віталієм</strong> 
+          в рамках дипломного дослідження (керівник - <strong>Бабич О.В.</strong>) на тему <br><br> <em>"Розробка апаратно-програмного комплексу з керування освітленням на
+          робочому місці"</em></p>
+          <p>&copy; ППК НТУ "ХПІ", 2018</p>
+          <p><small>використано "Vertical Layout with navigation" - a pen by <a class="copyrights" href="https://codepen.io/ettrics/" target="_system">Ettrics</a></small></p>
+      </div>
+    </article>
+  </section>
+  <a href="http://polytechnic.poltava.ua/" class="logo" target="_system">
+    <img class="logo" src="https://sites.google.com/a/polytechnic.co.cc/ppk/_/rsrc/1519720196336/config/customLogo.gif?revision=6"
+      alt="" />
+  </a>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+
+  <script src="./js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
